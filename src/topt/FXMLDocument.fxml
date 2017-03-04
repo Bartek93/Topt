@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="652.0" prefWidth="797.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="topt.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="652.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="topt.FXMLDocumentController">
 	<children>
 		<Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <BorderPane layoutX="138.0" layoutY="213.0" prefHeight="426.0" prefWidth="564.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -35,7 +35,7 @@
                               <TextField prefHeight="25.0" prefWidth="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <ComboBox prefHeight="25.0" prefWidth="310.0" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="elementsCBox" prefHeight="25.0" prefWidth="310.0" GridPane.columnIndex="1" />
                               <Button mnemonicParsing="false" text="Dodaj element toru" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <Button mnemonicParsing="false" text="Wyczyść listę elementów" GridPane.rowIndex="4" />
                            </children>
@@ -50,8 +50,10 @@
                                  <children>
                                     <TableView layoutX="270.0" layoutY="-37.0" prefHeight="157.0" prefWidth="793.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
+                                        <TableColumn prefWidth="149.0" text="Nazwa elementu" />
+                                        <TableColumn prefWidth="218.0" text="Liczba elementow" />
+                                          <TableColumn prefWidth="185.0" text="Wartosc oczekiwana" />
+                                          <TableColumn prefWidth="240.0" text="Odchylenie standardowe" />
                                       </columns>
                                     </TableView>
                                  </children>

@@ -3,6 +3,7 @@ package topt;
 import javafx.beans.property.*;
 
 public class RowData {
+	
     private StringProperty name;
     private IntegerProperty nrOfElements;
     private DoubleProperty standardDev;
@@ -12,18 +13,22 @@ public class RowData {
         if (name == null) name = new SimpleStringProperty(this, "name");
         return name;
     }
+    
     private IntegerProperty nrOfElementsProperty() {
         if (nrOfElements == null) nrOfElements = new SimpleIntegerProperty(this, "nrOfElements");
         return nrOfElements;
     }
+    
     private DoubleProperty standardDevProperty() {
         if (standardDev == null) standardDev = new SimpleDoubleProperty(this, "standardDev");
         return standardDev ;
     }
+    
     private DoubleProperty expectedValueProperty() {
         if (expectedValue == null) expectedValue = new SimpleDoubleProperty(this, "expectedValue");
         return expectedValue;
     }
+    
     public RowData(String name,int nrOfElements,double standardDev,double expectedValue) {
        nameProperty().setValue(name);
        nrOfElementsProperty().setValue(nrOfElements);

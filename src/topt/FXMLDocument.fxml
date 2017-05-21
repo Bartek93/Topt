@@ -6,13 +6,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="652.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="topt.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="topt.FXMLDocumentController">
 	<children>
-		<Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <BorderPane layoutX="138.0" layoutY="213.0" prefHeight="426.0" prefWidth="564.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
               <items>
+              	<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="795.0">
+                     <children>
+                        <SplitPane dividerPositions="0.5" layoutX="276.0" layoutY="37.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="795.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <TableView fx:id="addedElementList" layoutX="270.0" layoutY="-37.0" prefHeight="157.0" prefWidth="793.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="10.0" layoutY="50.0" text="Dopuszczalny blad [%]" />
+                                    <TextField fx:id="tfError" layoutX="200.0" layoutY="45.0" />
+                                    <Button mnemonicParsing="false" text="Wyczyść listę elementów" onAction="#handleButtonClearElementList" />
+                                    <Button mnemonicParsing="false" layoutX="195.0" text="Usuń ostatni element" onAction="#handleButtonRemoveLastElement" />
+                                    <Button layoutX="10.0" layoutY="80.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="179.0" text="Oblicz zakres tlumienia toru" onAction="#handleButtonCompute"/>
+                                    <TextArea fx:id="result" layoutX="200.0" layoutY="80.0" prefHeight="70.0" prefWidth="560.0" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
                         <GridPane prefHeight="322.0" prefWidth="795.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -32,44 +56,17 @@
                               <Label text="Liczba elementow" GridPane.rowIndex="1" />
                               <Label text="Wartosc oczekiwana [dB]" GridPane.rowIndex="2" />
                               <Label text="Odchylenie standardowe tlumiennosci wtraceniowej [dB]" GridPane.rowIndex="3" />
-                              <TextField prefHeight="25.0" prefWidth="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <ComboBox fx:id="elementsCBox" prefHeight="25.0" prefWidth="310.0" GridPane.columnIndex="1" />
-                              <Button mnemonicParsing="false" text="Dodaj element toru" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Button mnemonicParsing="false" text="Wyczyść listę elementów" GridPane.rowIndex="4" />
+                              <TextField fx:id="elementsNr" prefHeight="25.0" prefWidth="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="standardDev" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="expectedValue" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ComboBox fx:id="elementsCBox" prefHeight="25.0" prefWidth="310.0" GridPane.columnIndex="1" onAction="#handleComboBoxOnChanged" />
+                              <Button mnemonicParsing="false" text="Dodaj element toru" GridPane.columnIndex="1" GridPane.rowIndex="4" onAction="#handleButtonAddElement" />
+                              
                            </children>
                         </GridPane>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="795.0">
-                     <children>
-                        <SplitPane dividerPositions="0.5" layoutX="276.0" layoutY="37.0" orientation="VERTICAL" prefHeight="322.0" prefWidth="795.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <TableView layoutX="270.0" layoutY="-37.0" prefHeight="157.0" prefWidth="793.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columns>
-                                        <TableColumn prefWidth="149.0" text="Nazwa elementu" />
-                                        <TableColumn prefWidth="218.0" text="Liczba elementow" />
-                                          <TableColumn prefWidth="185.0" text="Wartosc oczekiwana" />
-                                          <TableColumn prefWidth="240.0" text="Odchylenie standardowe" />
-                                      </columns>
-                                    </TableView>
-                                 </children>
-                              </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <Label layoutX="227.0" layoutY="18.0" text="Dopuszczalny blad [%]" />
-                                    <TextField layoutX="372.0" layoutY="14.0" />
-                                    <Button layoutX="291.0" layoutY="49.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="179.0" text="Oblicz zakres tlumienia toru" />
-                                    <TextArea layoutX="112.0" layoutY="91.0" prefHeight="58.0" prefWidth="594.0" />
-                                 </children>
-                              </AnchorPane>
-                          </items>
-                        </SplitPane>
-                     </children>
-                  </AnchorPane>
+                
               </items>
             </SplitPane>
          </center>

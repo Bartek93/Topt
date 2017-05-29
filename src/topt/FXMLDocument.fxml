@@ -27,6 +27,7 @@
                                  <children>
                                     <Label layoutX="10.0" layoutY="50.0" text="Dopuszczalny blad [%]" />
                                     <TextField fx:id="tfError" layoutX="200.0" layoutY="45.0" />
+                                    <Label fx:id="pstwo" layoutX="400.0" layoutY="50.0" />
                                     <Button mnemonicParsing="false" text="Wyczyść listę elementów" onAction="#handleButtonClearElementList" />
                                     <Button mnemonicParsing="false" layoutX="195.0" text="Usuń ostatni element" onAction="#handleButtonRemoveLastElement" />
                                     <Button layoutX="10.0" layoutY="80.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="179.0" text="Oblicz zakres tlumienia toru" onAction="#handleButtonCompute"/>
@@ -53,7 +54,7 @@
                           </rowConstraints>
                            <children>
                               <Label text="Element" />
-                              <Label text="Liczba elementow" GridPane.rowIndex="1" />
+                              <Label fx:id="elementNrLabel" text="Liczba elementow" GridPane.rowIndex="1" />
                               <Label text="Wartosc oczekiwana [dB]" GridPane.rowIndex="2" />
                               <Label text="Odchylenie standardowe tlumiennosci wtraceniowej [dB]" GridPane.rowIndex="3" />
                               <TextField fx:id="elementsNr" prefHeight="25.0" prefWidth="104.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />

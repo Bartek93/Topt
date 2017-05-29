@@ -34,6 +34,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML private TextField expectedValue;
     @FXML private TextField tfError;
     @FXML private TextArea result;
+    @FXML private Label elementNrLabel;
+    
+    @FXML private Label pstwo;
 	
 	@FXML 
 	private ComboBox<RowData> elementsCBox;
@@ -44,11 +47,11 @@ public class FXMLDocumentController implements Initializable {
 	private void handleComboBoxOnChanged(ActionEvent event) {
 		System.out.println("Combobox");
 		elementsNr.setText(Integer.toString(elementsCBox.getValue().getNrOfElements()));
-//        if(elementsCBox.getValue().getName().startsWith("Świat")){
-//            elementNrLabel.setText("Długość światłowodu [km]");
-//        }else{
-//            elementNrLabel.setText("Ilość elementów ");
-//        }
+        if(elementsCBox.getValue().getName().startsWith("Świat")){
+            elementNrLabel.setText("Długość światłowodu [km]");
+        }else{
+            elementNrLabel.setText("Ilość elementów ");
+        }
         standardDev.setText(Double.toString(elementsCBox.getValue().getStandardDev()));
         expectedValue.setText(Double.toString(elementsCBox.getValue().getExpectedValue()));
 	}
@@ -125,7 +128,8 @@ public class FXMLDocumentController implements Initializable {
         System.out.println(normalDistribution.inverseCumulativeProbability(expectedError/2));
         System.out.println(nrOfStDev);
         nrOfStDev = roundResult(nrOfStDev);
-//        this.nrOfStDev.setText("Prawdopodobienśtwo błędu wynosi " + Double.toString(nrOfStDev)+"%");
+        this.pstwo.setText("Prawdopodobienśtwo błędu wynosi " + Double.toString(nrOfStDev)+"%");
+        System.out.println("Liczba odchylen" + Double.toString(nrOfStDev));
 //        this.nrOfStDevLabel.setText("Liczba ochyleń standardowych przy danym błędzie : " + Double.toString(nrOfStDev));
         return nrOfStDev;
     }
